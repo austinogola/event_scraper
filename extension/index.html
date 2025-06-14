@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .page-break { page-break-before: always; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .emoji {
+            font-size: 16px;
+        }
+        
+        .summary {
+            font-size: 14px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .skill-item {
+            padding: 4px 0;
+        }
+        
+        .skill-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 8px;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .job-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        
+        .job-details {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .tech-stack {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+        }
+        
+        .impact {
+            font-size: 12px;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 6px;
+            font-size: 13px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .achievements li:before {
+            content: "▸";
+            color: #e74c3c;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .deployment-item {
+            margin-bottom: 10px;
+            font-size: 13px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .deployment-item:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .ai-highlight {
+            background: linear-gradient(90deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+        
+        .education-item {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .cert-item {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .cert-item:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        @media print {
+            body {
+                font-size: 12px;
+            }
+            .section-title {
+                font-size: 16px;
+            }
+            .job-title {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>[Your Name]</h1>
+        <div class="contact-info">
+            [City, Country] • [youremail@example.com] • [GitHub] • [Portfolio/Website] • [LinkedIn]
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">💻</span> Summary
+        </div>
+        <div class="summary">
+            Versatile fullstack developer with 4+ years of experience building and deploying web applications and AI-integrated tools. Strong background in React, Next.js, Django, Flask, Node.js, and cloud deployments. Proven track record of shipping end-to-end products, including a GPT-powered browser extension with 30,000+ users. Passionate about blending intuitive UI with intelligent systems to create user-centric digital tools.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">🛠️</span> Technical Skills
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <span class="skill-label">Frontend:</span>
+                React, Next.js, Svelte, HTML, CSS, JavaScript, Tailwind, Figma-to-UI conversion
+            </div>
+            <div class="skill-item">
+                <span class="skill-label">Backend:</span>
+                Node.js, Express, Flask, Django, REST APIs, WebSockets
+            </div>
+            <div class="skill-item">
+                <span class="skill-label">AI/ML:</span>
+                GPT-3/4 (OpenAI), AI attribute detection, vocal separation, Python scripting
+            </div>
+            <div class="skill-item">
+                <span class="skill-label">Deployment:</span>
+                AWS EC2, Vercel, Railway.app, GitHub Actions
+            </div>
+            <div class="skill-item">
+                <span class="skill-label">Tools:</span>
+                Git, Postman, Docker (basic), MongoDB, PostgreSQL, SQLite, Redis
+            </div>
+            <div class="skill-item">
+                <span class="skill-label">Other:</span>
+                Browser Extensions, API integration, Authentication, File handling, Stripe
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">💼</span> Experience
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 AI Email Assistant (Browser Extension) – Freelance via Upwork</div>
+            <div class="job-details">
+                <strong>Tech:</strong> JavaScript, Node.js, OpenAI GPT, Chrome Extension APIs<br>
+                <strong>Role:</strong> Fullstack Developer
+            </div>
+            <div class="impact">Impact: 🟢 30,000+ users</div>
+            <ul class="achievements">
+                <li>Developed a Chrome extension that integrates GPT-3 to assist users in composing professional emails quickly.</li>
+                <li>Built both frontend UI and backend infrastructure for prompt processing, API usage tracking, and security.</li>
+                <li>Deployed backend to Railway with logging, rate-limiting, and analytics support.</li>
+                <li>Ensured seamless browser compatibility and auto-updating mechanisms.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 Dropella – Contract Developer</div>
+            <div class="job-details">
+                <strong>Tech:</strong> React, Django, PostgreSQL<br>
+                <strong>Role:</strong> Fullstack Developer
+            </div>
+            <ul class="achievements">
+                <li>Collaborated with the team to integrate various third-party APIs and payment gateways.</li>
+                <li>Translated Figma designs into responsive React components.</li>
+                <li>Implemented new backend features to improve speed, data handling, and reduce latency.</li>
+                <li>Improved app performance with backend optimization and frontend rendering tweaks.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 Kazuri Jewelry Website – Freelance Project</div>
+            <div class="job-details">
+                <strong>Tech:</strong> React, Next.js<br>
+                <strong>Role:</strong> Fullstack Developer
+            </div>
+            <ul class="achievements">
+                <li>Built a marketing and e-commerce website from scratch, fully responsive and mobile-first.</li>
+                <li>Integrated dynamic routing, cart logic, and SEO optimizations.</li>
+                <li>Deployed on Vercel with continuous deployment pipeline.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 Finance Data Aggregator – Personal Project</div>
+            <div class="job-details">
+                <strong>Tech:</strong> Django, React, PostgreSQL<br>
+                <strong>Role:</strong> Fullstack Developer
+            </div>
+            <ul class="achievements">
+                <li>Built a dashboard that scrapes, aggregates, and displays financial data using charts and filters.</li>
+                <li>Created secure REST APIs for accessing and manipulating datasets.</li>
+                <li>Implemented authentication, filtering, and CRUD interfaces.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 Gender & Attribute Detection Server – Self-Initiated AI Project</div>
+            <div class="job-details">
+                <strong>Tech:</strong> Flask, React, OpenCV, TensorFlow<br>
+                <strong>Role:</strong> AI/Backend Developer
+            </div>
+            <ul class="achievements">
+                <li>Created an AI server to detect gender, age range, and facial attributes from uploaded images.</li>
+                <li>Built a lightweight frontend for demoing the predictions.</li>
+                <li>Hosted on Railway and tested with a public image dataset.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">🔹 Vocal Separation App – Self-Initiated AI Project</div>
+            <div class="job-details">
+                <strong>Tech:</strong> Flask, React, Python, Spleeter<br>
+                <strong>Role:</strong> AI/Backend Developer
+            </div>
+            <ul class="achievements">
+                <li>Developed an app that lets users upload audio and get back separated vocals/instrumentals.</li>
+                <li>Used a pre-trained deep learning model and managed audio file I/O and cleanup.</li>
+                <li>Deployed backend and frontend for public testing.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">☁️</span> Deployment Experience
+        </div>
+        <div class="deployment-item">Deployed Flask and Node.js APIs on Railway.app and AWS EC2 with secure environment configs.</div>
+        <div class="deployment-item">Deployed React and Svelte frontend apps on Vercel with custom domains.</div>
+        <div class="deployment-item">Managed basic CI/CD workflows, logging, and uptime monitoring.</div>
+        <div class="deployment-item">Familiar with Linux-based server management and pm2 for Node process monitoring.</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">🧠</span> <span class="ai-highlight">AI & ML Highlights</span>
+        </div>
+        <div class="deployment-item">GPT-3 integration in browser extension for real-time email assistance.</div>
+        <div class="deployment-item">Used TensorFlow and OpenCV for gender/attribute detection.</div>
+        <div class="deployment-item">Vocal separation via Spleeter and Flask API for real-time audio processing.</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">
+            <span class="emoji">📜</span> Education & Certifications
+        </div>
+        <div class="education-item">
+            <strong>Bachelor's Degree / Ongoing Learning</strong> – [University or Online]
+        </div>
+        <div style="margin-top: 10px; font-size: 13px; color: #666; margin-bottom: 8px;">
+            <strong>Recommended Additions:</strong>
+        </div>
+        <div class="cert-item">TensorFlow Developer Certificate</div>
+        <div class="cert-item">Prompt Engineering with GPT (DeepLearning.AI or OpenAI courses)</div>
+        <div class="cert-item">AWS Developer – Associate (cloud deployment expertise)</div>
+    </div>
+</body>
+</html>

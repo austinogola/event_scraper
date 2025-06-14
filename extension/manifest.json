@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Eventbrite Scraper",
+  "version": "1.0",
+  "description": "Scrape and organize Eventbrite events.",
+  "permissions": ["scripting", "tabs", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.eventbrite.com/*"],
+      "js": ["content.js"],
+     "run_at": "document_start"
+    }
+  ],
+  "host_permissions": ["*://www.eventbrite.com/*"]
+}
