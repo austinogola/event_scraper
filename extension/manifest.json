@@ -3,7 +3,7 @@
   "name": "Eventbrite Scraper",
   "version": "1.0",
   "description": "Scrape and organize Eventbrite events.",
-  "permissions": ["scripting", "tabs", "activeTab"],
+  "permissions": ["scripting", "tabs", "activeTab","storage","webRequest"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -12,10 +12,16 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://www.eventbrite.com/*"],
-      "js": ["content.js"],
+      "matches": ["*://*.eventbrite.com/*","*://*.meetup.com/*"],
+      "js": ["jquery.js","content.js"],
      "run_at": "document_start"
     }
   ],
-  "host_permissions": ["*://www.eventbrite.com/*"]
+  "host_permissions": ["*://*.eventbrite.com/*","*://*.meetup.com/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["monkey.js" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
 }
