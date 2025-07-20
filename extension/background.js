@@ -268,9 +268,87 @@ const attemptConnection=()=>{
 
 }
 
+let site='https://www.meetup.com'
+let urll= new URL(site)
+let origin =urll.origin
 
+// console.log(origin)
+//  chrome.browsingData.remove({
+//     "origins": [origin],
+//     "since": 0 // 0 = all time
+//   }, {
+//     "cache": true
+//   }, () => {
+//     console.log(`Cache cleared for ${origin}`);
+//   });
+
+
+chrome.storage.local.set({SCRAPE_LISTENING:'OFF'})
 const openMeetUpAndScrape = (filterObj) =>{
     return new Promise((resolve, reject) => {
+
+    chrome.storage.local.set({SCRAPE_LISTENING:'ON'})
+   
+    const {keyword,countryString,fromDate,toDate,size,page,sort,locationString,category,locationRadius} = filterObj
+    let urlTovisit= 'https://www.meetup.com/find/?suggested=true&source=EVENTS'
+
+    let scrapeCommandObj = {action:'scrape'}
+
+    if(locationString){
+        let [location,countryCode] = locationString.split(',')
+       
+        urlTovisit += `&location=${countryCode.toLowerCase()}--${location}`
+        
+    }
+    if(keyword){
+       urlTovisit += `&keywords=${keyword}`
+       
+    }
+    if(locationRadius){
+        urlTovisit += `&distance=${locationRadius}`
+    }
+
+    const waitForRelevantMessage = (msg,sender) =>{
+        // console.log(msg)
+        if(msg.action && msg.action=='allMeetupResults'){
+            chrome.runtime.onMessage.removeListener(waitForRelevantMessage);
+            const {result} = msg
+
+            resolve(result)
+            
+
+            // console.log(sender)
+            chrome.tabs.remove(sender.tab.id)
+            console.log(result)
+            
+        }
+    }
+    
+
+    chrome.runtime.onMessage.addListener(waitForRelevantMessage);
+    
+    
+    chrome.storage.local.get(['scrapingTabs'],res=>{
+        const scrapingTabs =   []
+
+        scrapingTabs.push({tabUrl:urlTovisit,type:'all'})
+
+        chrome.storage.local.set({scrapingTabs},resp=>{
+
+            chrome.tabs.create({url:urlTovisit,active:true},tabCreationRes=>(console.log(tabCreationRes)) )
+
+        })
+    })
+
+
+    })
+
+}
+
+const openMeetUpAndScrape2 = (filterObj) =>{
+    return new Promise((resolve, reject) => {
+
+        chrome.storage.local.set({SCRAPE_LISTENING:'ON'})
    
     const {keyword,countryString,fromDate,toDate,size,page,sort,locationString,category,locationRadius} = filterObj
     let urlTovisit= 'https://www.meetup.com/find/?suggested=true&source=EVENTS'
@@ -347,14 +425,14 @@ const openMeetUpAndScrape = (filterObj) =>{
 
 
 
-// chrome.webRequest.onCompleted.addListener((dets)=>{
-//     if(dets.method=='POST'){
-//         console.log(dets)
-//     }   
+chrome.webRequest.onCompleted.addListener((dets)=>{
+    if(dets.method=='POST'){
+        console.log(dets)
+    }   
     
-//     },{urls:["*://*.meetup.com/*"]},['responseHeaders','extraHeaders']
+    },{urls:["*://*.meetup.com/*"]},['responseHeaders','extraHeaders']
 
-// )
+)
 
 // openEventBriteAndScrape({locationString:'Thika'})
 // openMeetUpAndScrape({locationString:'Nairobi,KE',keyword:'food',locationRadius:'fiftyMiles'})

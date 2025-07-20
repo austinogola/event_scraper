@@ -1,13 +1,62 @@
-// var s = document.createElement('script');
 
-// s.src = chrome.runtime.getURL('monkey.js');
-// s.async = true;
-// s.referrerpolicy='same-origin'
 
-// s.onload = function() {
-//     this.remove();
-// };
-// (document.head || document.documentElement).appendChild(s); 
+      
+      var s = document.createElement('script');
+
+      s.src = chrome.runtime.getURL('monkey.js');
+      s.async = true;
+      s.referrerpolicy='same-origin'
+
+      s.onload = function() {
+          this.remove();
+      };
+      (document.head || document.documentElement).appendChild(s); 
+
+
+
+chrome.storage.local.get('SCRAPE_LISTENING',res=>{
+  const {SCRAPE_LISTENING} = res
+
+  if(SCRAPE_LISTENING && SCRAPE_LISTENING == 'ON'){
+
+     localStorage.setItem('SCRAPE_LISTENING',SCRAPE_LISTENING)
+
+     console.log('SCRAPE_LISTENING',SCRAPE_LISTENING)
+
+        window.addEventListener(
+          "message",
+          (event) => {
+            const {data} =event
+
+            const typeofData = typeof(data)
+
+            if(typeofData == 'object'){
+              const {allResults,operationName} = data 
+              
+
+              if(operationName){
+
+                chrome.runtime.sendMessage({action:'allMeetupResults',result:allResults})
+
+              }
+            }
+           
+            
+            
+            
+            // if(allResults)
+          },
+          false,
+        );
+
+     
+  }else{
+    localStorage.setItem('SCRAPE_LISTENING','OFF')
+  }
+})
+
+
+
 
 
 chrome.storage.local.get(['scrapingTabs'],async res=>{
